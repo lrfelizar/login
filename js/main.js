@@ -21,7 +21,6 @@ const cargarUsuarios = () => {
     peticion.onload = () => {
 
         let datos = JSON.parse(peticion.responseText);
-
         if ( datos.error ) {
 
             error_box.classList.add('active');
@@ -36,7 +35,7 @@ const cargarUsuarios = () => {
                 element.innerHTML += ("<td>" + datos[i].edad + "</td>");
                 element.innerHTML += ("<td>" + datos[i].pais + "</td>");
                 element.innerHTML += ("<td>" + datos[i].correo + "</td>");
-                element.innerHTML += ("<td><button onclick='verUsuarios("+datos[i].id+")'' type='button' class='btn active'><i class='fas fa-user-edit'></i></button><button onclick='bajaUsuarios("+datos[i].id+")'' type='button' class='btn active' style='background: #c40018;'><i class='fas fa-times'></i></button></td>");
+                element.innerHTML += ("<td><button onclick='verUsuarios("+datos[i].id+")'' type='button' class='btn active'><span class='user'></span></button><button onclick='bajaUsuarios("+datos[i].id+")'' type='button' class='btn active' style='background: #c40018;'><span class='close'></span></button></td>");
                 tabla.appendChild(element);
     
             }

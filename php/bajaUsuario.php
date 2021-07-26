@@ -1,4 +1,5 @@
 <?php
+include __DIR__.'\config.php';
 
 error_reporting(0);
 header('Content-Type: application/json; charset=UTF-8');
@@ -6,7 +7,7 @@ header('Content-Type: application/json; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $id = $_POST['id'];
-    $conexion = new mysqli('localhost', 'root', '', 'login');
+    $conexion = new mysqli(DB_ENVIROMENT, DB_USER, DB_PASS, DB_NAME);
 
     if ( $conexion->connect_errno ) {
 

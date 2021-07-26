@@ -1,4 +1,5 @@
 <?php session_start();
+include 'php\config.php';
 
 if (isset($_SESSION['usuario'])) {
     header('Location: index.php');
@@ -12,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = hash('sha512', $password);
 
     try {
-        $conexion = new PDO('mysql:host=localhost;dbname=login', 'root', '');
+        $conexion = new PDO('mysql:host='.DB_ENVIROMENT.';dbname='.DB_NAME.'', DB_USER , DB_PASS);
     } catch (PDPException $e) {
         echo "Error: " . $e->getMessage();
     }

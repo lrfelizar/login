@@ -1,4 +1,5 @@
 <?php
+include __DIR__.'\config.php';
 
 error_reporting(0);
 header('Content-Type: application/json; charset=UTF-8');
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ( strlen($nombre) <= 120 && strlen($pais) <= 50 && strlen($correo) <= 120 && strlen($edad) <= 3)
         ){
 
-            $conexion = new mysqli('localhost', 'root', '', 'login');
+            $conexion = new mysqli(DB_ENVIROMENT, DB_USER, DB_PASS, DB_NAME);
         
             if ($conexion->connect_errno) {
                 $respuesta = [ 'error' => true ];
